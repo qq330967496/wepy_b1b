@@ -1,33 +1,53 @@
 <style lang="less">
-  @mainColor: #FFCA0C;
+  @mainColor: #EA0137;
+  @greenColor:#51c332;
   .index {
-    background: #eee;
     .mod {
-      display: flex;
       width: 100%;
+      margin-top:10rpx;
       .time {
-        flex: 1;
+        width:100%;
+        .time_text{
+          border-left: 10rpx solid @mainColor;
+          padding-left: 10rpx;
+          margin-left: 0.5%;
+          margin-bottom:10rpx;
+        }
       }
       .goods {
-        flex: 4;
         display: flex;
         flex-wrap: wrap;
         .good_item {
           width: 49%;
-          margin-left: 1%;
+          margin-left: 0.5%;
+          margin-right: 0.5%;
           margin-bottom: 8rpx;
           background: #fff;
-          .good_name {
-
-          }
+          padding-bottom:10rpx;
           .good_img {
             image {
               width: 100%;
-              height: 200rpx;
+              height: 300rpx;
             }
           }
+          .good_name {
+            height:80rpx;
+            margin:10rpx 20rpx;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;/*两行*/
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            word-wrap: break-word;
+          }
           .good_price {
-            color: #FFCA0C;
+            color: @mainColor;
+            font-size: 28rpx;
+            text-align: right;
+            margin:0 20rpx;
+            view{
+              font-size:40rpx;
+              display: inline-block;
+            }
           }
         }
       }
@@ -36,13 +56,15 @@
 </style>
 <template>
   <view class="index">
-    <repeat for="{{json_data}}" key="key" index="index" item="item">
+    <repeat for="{{json_data}}" key="key" index="index" item="item" wx:if="{{item.status==1}}">
       <view class="mod">
         <view class="time">
-          {{item.time}}
+          <view class="time_text">
+            {{item.time}}
+          </view>
         </view>
         <view class="goods">
-          <repeat for="{{item.goods}}" key="key2" index="index2" item="item2">
+          <repeat for="{{item.goods}}" key="key2" index="index2" item="item2" wx:if="{{item2.status==1}}">
             <view class="good_item">
               <view class="good_img">
                 <image src="{{item2.img}}" mode="aspectFit"></image>
@@ -51,13 +73,8 @@
                 {{item2.name}}
               </view>
               <view class="good_price">
-                ￥{{item2.price}}
+                ￥<view>{{item2.priceStr}}</view>
               </view>
-              <repeat for="{{item2.other}}" key="key3" index="index3" item="item3">
-                <view class="other_price">
-                  ￥{{item3.price}}({{item3.platform}})
-                </view>
-              </repeat>
             </view>
           </repeat>
         </view>
@@ -82,32 +99,20 @@
           status: 1,
           goods: [
             {
-              id: 1,
+              id: 5,
               status: 1,
-              name: 'XXX笔记本',
+              name: '华硕 FX63VD 7700 i7H/8G+8G/1T+128G/1050-4G/高分/黑/IPS屏',
               price: 111,
               time: '2018-01-08',
               img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1515390297897&di=89af3def057b0cad2518a608a6fb5349&imgtype=0&src=http%3A%2F%2Fimg.taopic.com%2Fuploads%2Fallimg%2F120715%2F201659-120G521522362.jpg',
-              other: [
-                {
-                  platform: 'JD',
-                  price: 222,
-                }
-              ]
             },
             {
-              id: 2,
+              id: 4,
               status: 1,
               name: 'XXX笔记本',
               price: 111,
               time: '2018-01-08',
               img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1515390297897&di=89af3def057b0cad2518a608a6fb5349&imgtype=0&src=http%3A%2F%2Fimg.taopic.com%2Fuploads%2Fallimg%2F120715%2F201659-120G521522362.jpg',
-              other: [
-                {
-                  platform: 'JD',
-                  price: 222,
-                }
-              ]
             },
             {
               id: 3,
@@ -116,26 +121,58 @@
               price: 111,
               time: '2018-01-08',
               img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1515390297897&di=89af3def057b0cad2518a608a6fb5349&imgtype=0&src=http%3A%2F%2Fimg.taopic.com%2Fuploads%2Fallimg%2F120715%2F201659-120G521522362.jpg',
-              other: [
-                {
-                  platform: 'JD',
-                  price: 222,
-                }
-              ]
             }
           ]
-
+        },
+        {
+          time: '2017-01',
+          status: 1,
+          goods: [
+            {
+              id: 2,
+              status: 1,
+              name: 'XXX笔记本',
+              price: 111,
+              time: '2018-01-08',
+              img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1515390297897&di=89af3def057b0cad2518a608a6fb5349&imgtype=0&src=http%3A%2F%2Fimg.taopic.com%2Fuploads%2Fallimg%2F120715%2F201659-120G521522362.jpg',
+            },
+            {
+              id: 1,
+              status: 1,
+              name: 'XXX笔记本',
+              price: 111,
+              time: '2018-01-08',
+              img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1515390297897&di=89af3def057b0cad2518a608a6fb5349&imgtype=0&src=http%3A%2F%2Fimg.taopic.com%2Fuploads%2Fallimg%2F120715%2F201659-120G521522362.jpg',
+            }
+          ]
         },
       ]
     }
 
     computed = {}
 
-    methods = {}
+    methods = {
 
-    events = {}
+    }
 
-    onLoad () {
+    events = {
+
+    }
+
+    onLoad (params, data) {
+      this.dataFilter();
+    }
+
+    dataFilter(){
+      for(let i = 0;i<this.json_data.length;i++){
+        let item = this.json_data[i];
+        for(let j = 0;j<item.goods.length;j++){
+          let good = item.goods[j];
+          good.priceStr = good.price.toFixed(2);
+          this.$apply();
+        }
+      }
+      this.$apply();
     }
   }
 </script>

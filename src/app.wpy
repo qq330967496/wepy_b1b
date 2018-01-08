@@ -1,7 +1,8 @@
 <style lang="less">
-  @mainColor:#FFCA0C;
+  @mainColor:#EA0137;
   page{
     font-size: 32rpx;
+    background: #ebebeb;
   }
 </style>
 
@@ -14,10 +15,9 @@ export default class extends wepy.app {
       'pages/index'
     ],
     window: {
-      backgroundColor: "#eeeeee",
       backgroundTextStyle: 'light',
-      navigationBarBackgroundColor: '#FFCA0C',
-      navigationBarTextStyle: 'black',
+      navigationBarBackgroundColor: '#EA0137',
+      navigationBarTextStyle: 'white',
       navigationBarTitleText: '比一比',
     }
   }
