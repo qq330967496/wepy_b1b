@@ -1,0 +1,77 @@
+<style lang="less">
+  .index {
+    /*background: #FFCA0C;*/
+  }
+</style>
+<template>
+  <view class="index">
+    <repeat for="{{json_data}}" key="key" index="index" item="item">
+      <view class="mod">
+        <view class="time">
+          {{item.time}}
+        </view>
+        <view class="goods">
+          <repeat for="{{item.goods}}" key="key2" index="index2" item="item2">
+            <view class="good_item">
+              <view class="good_img">
+                <image :src="item2.img"></image>
+              </view>
+              <view class="good_price">
+                {{item2.price}}
+              </view>
+            </view>
+          </repeat>
+        </view>
+      </view>
+    </repeat>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import Toast from 'wepy-com-toast'
+  import List from '@/components/sh-list'
+  import ListItem from '@/components/sh-list-item'
+
+  export default class Index extends wepy.page {
+    config = {
+//      navigationBarTitleText: 'sh-ui'
+    }
+    components = {}
+
+    data = {
+      json_data: [
+        {
+          time:'2018-01',
+          status: 1,
+          goods: [
+            {
+              id: 1,
+              status: 1,
+              name: 'XXX笔记本',
+              price: 111,
+              time: '2018-01-08',
+              img:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1515390297897&di=89af3def057b0cad2518a608a6fb5349&imgtype=0&src=http%3A%2F%2Fimg.taopic.com%2Fuploads%2Fallimg%2F120715%2F201659-120G521522362.jpg',
+              other: [
+                {
+                  platform: 'JD',
+                  price: 222,
+                }
+              ]
+            }
+          ]
+
+        },
+      ]
+    }
+
+    computed = {}
+
+    methods = {}
+
+    events = {}
+
+    onLoad () {
+    }
+  }
+</script>

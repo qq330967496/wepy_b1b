@@ -1,0 +1,22 @@
+
+  <view class="index">
+    <block wx:for="{{json_data}}" wx:for-index="index" wx:for-item="item" wx:key="key">
+      <view class="mod">
+        <view class="time">
+          {{item.time}}
+        </view>
+        <view class="goods">
+          <block wx:for="{{item.goods}}" wx:for-index="index2" wx:for-item="item2" wx:key="key2">
+            <view class="good_item">
+              <view class="good_img">
+                <image  v-bind:src.once="item2.img"/>
+              </view>
+              <view class="good_price">
+                {{item2.price}}
+              </view>
+            </view>
+          </block>
+        </view>
+      </view>
+    </block>
+  </view>
