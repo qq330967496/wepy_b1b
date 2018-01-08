@@ -14,7 +14,7 @@
           <repeat for="{{item.goods}}" key="key2" index="index2" item="item2">
             <view class="good_item">
               <view class="good_img">
-                <image :src="item2.img"></image>
+                <!--<image :src="item2.img"></image>-->
               </view>
               <view class="good_price">
                 {{item2.price}}
