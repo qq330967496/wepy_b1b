@@ -1,0 +1,1 @@
+.index{background:#eee}.index .mod{display:flex;width:100%}.index .mod .time{flex:1}.index .mod .goods{flex:4;display:flex;flex-wrap:wrap}.index .mod .goods .good_item{width:49%;margin-left:1%;margin-bottom:8rpx;background:#fff}.index .mod .goods .good_item .good_img image{width:100%;height:200rpx}.index .mod .goods .good_item .good_price{color:#FFCA0C}

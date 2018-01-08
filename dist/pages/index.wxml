@@ -9,11 +9,19 @@
           <block wx:for="{{item.goods}}" wx:for-index="index2" wx:for-item="item2" wx:key="key2">
             <view class="good_item">
               <view class="good_img">
-                <image  v-bind:src.once="item2.img"/>
+                <image src="{{item2.img}}" mode="aspectFit"/>
+              </view>
+              <view class="good_name">
+                {{item2.name}}
               </view>
               <view class="good_price">
-                {{item2.price}}
+                ￥{{item2.price}}
               </view>
+              <block wx:for="{{item2.other}}" wx:for-index="index3" wx:for-item="item3" wx:key="key3">
+                <view class="other_price">
+                  ￥{{item3.price}}({{item3.platform}})
+                </view>
+              </block>
             </view>
           </block>
         </view>

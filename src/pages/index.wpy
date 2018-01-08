@@ -1,6 +1,37 @@
 <style lang="less">
+  @mainColor: #FFCA0C;
   .index {
-    /*background: #FFCA0C;*/
+    background: #eee;
+    .mod {
+      display: flex;
+      width: 100%;
+      .time {
+        flex: 1;
+      }
+      .goods {
+        flex: 4;
+        display: flex;
+        flex-wrap: wrap;
+        .good_item {
+          width: 49%;
+          margin-left: 1%;
+          margin-bottom: 8rpx;
+          background: #fff;
+          .good_name {
+
+          }
+          .good_img {
+            image {
+              width: 100%;
+              height: 200rpx;
+            }
+          }
+          .good_price {
+            color: #FFCA0C;
+          }
+        }
+      }
+    }
   }
 </style>
 <template>
@@ -14,11 +45,19 @@
           <repeat for="{{item.goods}}" key="key2" index="index2" item="item2">
             <view class="good_item">
               <view class="good_img">
-                <!--<image :src="item2.img"></image>-->
+                <image src="{{item2.img}}" mode="aspectFit"></image>
+              </view>
+              <view class="good_name">
+                {{item2.name}}
               </view>
               <view class="good_price">
-                {{item2.price}}
+                ￥{{item2.price}}
               </view>
+              <repeat for="{{item2.other}}" key="key3" index="index3" item="item3">
+                <view class="other_price">
+                  ￥{{item3.price}}({{item3.platform}})
+                </view>
+              </repeat>
             </view>
           </repeat>
         </view>
@@ -29,9 +68,6 @@
 
 <script>
   import wepy from 'wepy'
-  import Toast from 'wepy-com-toast'
-  import List from '@/components/sh-list'
-  import ListItem from '@/components/sh-list-item'
 
   export default class Index extends wepy.page {
     config = {
@@ -42,7 +78,7 @@
     data = {
       json_data: [
         {
-          time:'2018-01',
+          time: '2018-01',
           status: 1,
           goods: [
             {
@@ -51,7 +87,35 @@
               name: 'XXX笔记本',
               price: 111,
               time: '2018-01-08',
-              img:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1515390297897&di=89af3def057b0cad2518a608a6fb5349&imgtype=0&src=http%3A%2F%2Fimg.taopic.com%2Fuploads%2Fallimg%2F120715%2F201659-120G521522362.jpg',
+              img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1515390297897&di=89af3def057b0cad2518a608a6fb5349&imgtype=0&src=http%3A%2F%2Fimg.taopic.com%2Fuploads%2Fallimg%2F120715%2F201659-120G521522362.jpg',
+              other: [
+                {
+                  platform: 'JD',
+                  price: 222,
+                }
+              ]
+            },
+            {
+              id: 2,
+              status: 1,
+              name: 'XXX笔记本',
+              price: 111,
+              time: '2018-01-08',
+              img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1515390297897&di=89af3def057b0cad2518a608a6fb5349&imgtype=0&src=http%3A%2F%2Fimg.taopic.com%2Fuploads%2Fallimg%2F120715%2F201659-120G521522362.jpg',
+              other: [
+                {
+                  platform: 'JD',
+                  price: 222,
+                }
+              ]
+            },
+            {
+              id: 3,
+              status: 1,
+              name: 'XXX笔记本',
+              price: 111,
+              time: '2018-01-08',
+              img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1515390297897&di=89af3def057b0cad2518a608a6fb5349&imgtype=0&src=http%3A%2F%2Fimg.taopic.com%2Fuploads%2Fallimg%2F120715%2F201659-120G521522362.jpg',
               other: [
                 {
                   platform: 'JD',
