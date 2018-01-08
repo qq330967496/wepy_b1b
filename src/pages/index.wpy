@@ -102,7 +102,7 @@
               id: 5,
               status: 1,
               name: '华硕 FX63VD 7700 i7H/8G+8G/1T+128G/1050-4G/高分/黑/IPS屏',
-              price: 111,
+              price: 111.2,
               time: '2018-01-08',
               img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1515390297897&di=89af3def057b0cad2518a608a6fb5349&imgtype=0&src=http%3A%2F%2Fimg.taopic.com%2Fuploads%2Fallimg%2F120715%2F201659-120G521522362.jpg',
             },
